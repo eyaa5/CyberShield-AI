@@ -39,6 +39,23 @@ def detect_suspicious_activity(event):
     return alerts
 
 
+def create_summary(alerts):
+    total_incidents = len(alerts)
+    critical_count = sum(1 for alert in alerts if alert["severity"] == "CRITICAL")
+    high_count = sum(1 for alert in alerts if alert["severity"] == "HIGH")
+    average_score = 0
+
+    if total_incidents > 0:
+        average_score = sum(alert["score"] for alert in alerts) / total_incidents
+
+    return {
+        "totalIncidents": total_incidents,
+        "criticalIncidents": critical_count,
+        "highIncidents": high_count,
+        "averageThreatScore": round(average_score, 2)
+    }
+
+
 def print_alert(alert):
     print("\n SECURITY ALERT")
     print("--------------------------------")
@@ -52,9 +69,24 @@ def print_alert(alert):
     print(f"Message: {alert['message']}")
 
 
-def save_incidents_to_report(alerts):
+def print_summary(summary):
+    print("\n INCIDENT SUMMARY")
+    print("--------------------------------")
+    print(f"Total Incidents: {summary['totalIncidents']}")
+    print(f"Critical Incidents: {summary['criticalIncidents']}")
+    print(f"High Incidents: {summary['highIncidents']}")
+    print(f"Average Threat Score: {summary['averageThreatScore']}/100")
+
+
+def save_incidents_to_report(alerts, summary):
+    report = {
+        "generatedAt": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "summary": summary,
+        "incidents": alerts
+    }
+
     with open("reports/incidents.json", "w") as file:
-        json.dump(alerts, file, indent=4)
+        json.dump(report, file, indent=4)
 
 
 if __name__ == "__main__":
@@ -62,9 +94,12 @@ if __name__ == "__main__":
         sample_event = json.load(file)
 
     result = detect_suspicious_activity(sample_event)
+    summary = create_summary(result)
 
     for alert in result:
         print_alert(alert)
 
-    save_incidents_to_report(result)
+    print_summary(summary)
+    save_incidents_to_report(result, summary)
+
     print("\n Incident report saved to reports/incidents.json")
