@@ -1,0 +1,10 @@
+def send_email_alert(alert):
+    print("\n EMAIL ALERT")
+    print("--------------------------------")
+    print(f"To: security-team@cybershield.ai")
+    print(f"Subject: {alert['riskLevel']} Security Incident Detected")
+    print("")
+    print(f"Incident ID: {alert['incidentId']}")
+    print(f"Event: {alert['eventName']}")
+    print(f"Severity: {alert['severity']}")
+    print(f"Risk Level: {alert['riskLevel']}")
