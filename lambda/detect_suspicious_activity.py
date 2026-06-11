@@ -1,3 +1,6 @@
+import json
+
+
 DANGEROUS_ACTIONS = {
     "DeleteBucket": "CRITICAL",
     "StopLogging": "CRITICAL",
@@ -26,13 +29,8 @@ def detect_suspicious_activity(event):
 
 
 if __name__ == "__main__":
-    sample_event = {
-        "Records": [
-            {"eventName": "CreateAccessKey", "sourceIPAddress": "192.168.1.10"},
-            {"eventName": "DeleteTrail", "sourceIPAddress": "192.168.1.30"},
-            {"eventName": "ListBuckets", "sourceIPAddress": "192.168.1.20"}
-        ]
-    }
+    with open("test-events/sample_cloudtrail_event.json", "r") as file:
+        sample_event = json.load(file)
 
     result = detect_suspicious_activity(sample_event)
 
