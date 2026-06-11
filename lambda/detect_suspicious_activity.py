@@ -1,43 +1,40 @@
+DANGEROUS_ACTIONS = {
+    "DeleteBucket": "CRITICAL",
+    "StopLogging": "CRITICAL",
+    "DeleteTrail": "CRITICAL",
+    "AuthorizeSecurityGroupIngress": "HIGH",
+    "CreateAccessKey": "HIGH"
+}
+
+
 def detect_suspicious_activity(event):
-    suspicious_events = []
+    alerts = []
 
     for record in event.get("Records", []):
         event_name = record.get("eventName", "")
         source_ip = record.get("sourceIPAddress", "Unknown")
 
-        dangerous_actions = [
-            "DeleteBucket",
-            "StopLogging",
-            "DeleteTrail",
-            "AuthorizeSecurityGroupIngress",
-            "CreateAccessKey"
-        ]
-
-        if event_name in dangerous_actions:
-            suspicious_events.append({
+        if event_name in DANGEROUS_ACTIONS:
+            alerts.append({
                 "eventName": event_name,
                 "sourceIP": source_ip,
-                "severity": "HIGH",
+                "severity": DANGEROUS_ACTIONS[event_name],
                 "message": f"Suspicious AWS activity detected: {event_name}"
             })
 
-    return suspicious_events
+    return alerts
 
 
-sample_event = {
-    "Records": [
-        {
-            "eventName": "CreateAccessKey",
-            "sourceIPAddress": "192.168.1.10"
-        },
-        {
-            "eventName": "ListBuckets",
-            "sourceIPAddress": "192.168.1.20"
-        }
-    ]
-}
+if __name__ == "__main__":
+    sample_event = {
+        "Records": [
+            {"eventName": "CreateAccessKey", "sourceIPAddress": "192.168.1.10"},
+            {"eventName": "DeleteTrail", "sourceIPAddress": "192.168.1.30"},
+            {"eventName": "ListBuckets", "sourceIPAddress": "192.168.1.20"}
+        ]
+    }
 
-result = detect_suspicious_activity(sample_event)
+    result = detect_suspicious_activity(sample_event)
 
-for alert in result:
-    print(alert)
+    for alert in result:
+        print(alert)
