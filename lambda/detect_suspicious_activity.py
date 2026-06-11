@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+import uuid
 
 DANGEROUS_ACTIONS = {
     "DeleteBucket": {
@@ -29,6 +31,10 @@ DANGEROUS_ACTIONS = {
 }
 
 
+def generate_incident_id():
+    return f"INC-{uuid.uuid4().hex[:8].upper()}"
+
+
 def detect_suspicious_activity(event):
     alerts = []
 
@@ -40,6 +46,8 @@ def detect_suspicious_activity(event):
             threat_info = DANGEROUS_ACTIONS[event_name]
 
             alerts.append({
+                "incidentId": generate_incident_id(),
+                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "eventName": event_name,
                 "sourceIP": source_ip,
                 "severity": threat_info["severity"],
@@ -53,7 +61,9 @@ def detect_suspicious_activity(event):
 
 def print_alert(alert):
     print("\n SECURITY ALERT")
-    print("----------------------------")
+    print("--------------------------------")
+    print(f"Incident ID: {alert['incidentId']}")
+    print(f"Timestamp: {alert['timestamp']}")
     print(f"Event: {alert['eventName']}")
     print(f"Source IP: {alert['sourceIP']}")
     print(f"Severity: {alert['severity']}")
