@@ -1,29 +1,33 @@
 {
-    "generatedAt": "2026-06-11 14:39:25",
+    "generatedAt": "2026-06-11 14:41:40",
     "summary": {
         "totalIncidents": 2,
         "criticalIncidents": 1,
         "highIncidents": 1,
+        "mediumIncidents": 0,
+        "lowIncidents": 0,
         "averageThreatScore": 87.5
     },
     "incidents": [
         {
-            "incidentId": "INC-14E0589D",
-            "timestamp": "2026-06-11 14:39:25",
+            "incidentId": "INC-6B85E986",
+            "timestamp": "2026-06-11 14:41:40",
             "eventName": "CreateAccessKey",
             "sourceIP": "192.168.1.10",
             "severity": "HIGH",
             "score": 75,
+            "riskLevel": "HIGH",
             "category": "Identity Risk",
             "message": "Suspicious AWS activity detected: CreateAccessKey"
         },
         {
-            "incidentId": "INC-DDE4F651",
-            "timestamp": "2026-06-11 14:39:25",
+            "incidentId": "INC-9CBCC495",
+            "timestamp": "2026-06-11 14:41:40",
             "eventName": "DeleteTrail",
             "sourceIP": "192.168.1.30",
             "severity": "CRITICAL",
             "score": 100,
+            "riskLevel": "CRITICAL",
             "category": "Logging Tampering",
             "message": "Suspicious AWS activity detected: DeleteTrail"
         }

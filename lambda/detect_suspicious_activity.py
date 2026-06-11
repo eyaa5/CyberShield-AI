@@ -15,6 +15,17 @@ def generate_incident_id():
     return f"INC-{uuid.uuid4().hex[:8].upper()}"
 
 
+def calculate_risk_level(score):
+    if score >= 90:
+        return "CRITICAL"
+    elif score >= 70:
+        return "HIGH"
+    elif score >= 40:
+        return "MEDIUM"
+    else:
+        return "LOW"
+
+
 def detect_suspicious_activity(event):
     alerts = []
 
@@ -32,6 +43,7 @@ def detect_suspicious_activity(event):
                 "sourceIP": source_ip,
                 "severity": threat_info["severity"],
                 "score": threat_info["score"],
+                "riskLevel": calculate_risk_level(threat_info["score"]),
                 "category": threat_info["category"],
                 "message": f"Suspicious AWS activity detected: {event_name}"
             })
@@ -41,10 +53,12 @@ def detect_suspicious_activity(event):
 
 def create_summary(alerts):
     total_incidents = len(alerts)
-    critical_count = sum(1 for alert in alerts if alert["severity"] == "CRITICAL")
-    high_count = sum(1 for alert in alerts if alert["severity"] == "HIGH")
-    average_score = 0
+    critical_count = sum(1 for alert in alerts if alert["riskLevel"] == "CRITICAL")
+    high_count = sum(1 for alert in alerts if alert["riskLevel"] == "HIGH")
+    medium_count = sum(1 for alert in alerts if alert["riskLevel"] == "MEDIUM")
+    low_count = sum(1 for alert in alerts if alert["riskLevel"] == "LOW")
 
+    average_score = 0
     if total_incidents > 0:
         average_score = sum(alert["score"] for alert in alerts) / total_incidents
 
@@ -52,6 +66,8 @@ def create_summary(alerts):
         "totalIncidents": total_incidents,
         "criticalIncidents": critical_count,
         "highIncidents": high_count,
+        "mediumIncidents": medium_count,
+        "lowIncidents": low_count,
         "averageThreatScore": round(average_score, 2)
     }
 
@@ -66,6 +82,7 @@ def print_alert(alert):
     print(f"Severity: {alert['severity']}")
     print(f"Category: {alert['category']}")
     print(f"Threat Score: {alert['score']}/100")
+    print(f"Risk Level: {alert['riskLevel']}")
     print(f"Message: {alert['message']}")
 
 
@@ -75,6 +92,8 @@ def print_summary(summary):
     print(f"Total Incidents: {summary['totalIncidents']}")
     print(f"Critical Incidents: {summary['criticalIncidents']}")
     print(f"High Incidents: {summary['highIncidents']}")
+    print(f"Medium Incidents: {summary['mediumIncidents']}")
+    print(f"Low Incidents: {summary['lowIncidents']}")
     print(f"Average Threat Score: {summary['averageThreatScore']}/100")
 
 
