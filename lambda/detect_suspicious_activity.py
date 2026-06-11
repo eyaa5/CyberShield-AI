@@ -3,31 +3,11 @@ from datetime import datetime
 import uuid
 
 DANGEROUS_ACTIONS = {
-    "DeleteBucket": {
-        "severity": "CRITICAL",
-        "score": 95,
-        "category": "Data Destruction"
-    },
-    "StopLogging": {
-        "severity": "CRITICAL",
-        "score": 100,
-        "category": "Logging Tampering"
-    },
-    "DeleteTrail": {
-        "severity": "CRITICAL",
-        "score": 100,
-        "category": "Logging Tampering"
-    },
-    "AuthorizeSecurityGroupIngress": {
-        "severity": "HIGH",
-        "score": 80,
-        "category": "Network Exposure"
-    },
-    "CreateAccessKey": {
-        "severity": "HIGH",
-        "score": 75,
-        "category": "Identity Risk"
-    }
+    "DeleteBucket": {"severity": "CRITICAL", "score": 95, "category": "Data Destruction"},
+    "StopLogging": {"severity": "CRITICAL", "score": 100, "category": "Logging Tampering"},
+    "DeleteTrail": {"severity": "CRITICAL", "score": 100, "category": "Logging Tampering"},
+    "AuthorizeSecurityGroupIngress": {"severity": "HIGH", "score": 80, "category": "Network Exposure"},
+    "CreateAccessKey": {"severity": "HIGH", "score": 75, "category": "Identity Risk"}
 }
 
 
@@ -72,6 +52,11 @@ def print_alert(alert):
     print(f"Message: {alert['message']}")
 
 
+def save_incidents_to_report(alerts):
+    with open("reports/incidents.json", "w") as file:
+        json.dump(alerts, file, indent=4)
+
+
 if __name__ == "__main__":
     with open("test-events/sample_cloudtrail_event.json", "r") as file:
         sample_event = json.load(file)
@@ -80,3 +65,6 @@ if __name__ == "__main__":
 
     for alert in result:
         print_alert(alert)
+
+    save_incidents_to_report(result)
+    print("\n Incident report saved to reports/incidents.json")

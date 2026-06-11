@@ -1,0 +1,22 @@
+[
+    {
+        "incidentId": "INC-A943D42E",
+        "timestamp": "2026-06-11 14:36:21",
+        "eventName": "CreateAccessKey",
+        "sourceIP": "192.168.1.10",
+        "severity": "HIGH",
+        "score": 75,
+        "category": "Identity Risk",
+        "message": "Suspicious AWS activity detected: CreateAccessKey"
+    },
+    {
+        "incidentId": "INC-F8E166CD",
+        "timestamp": "2026-06-11 14:36:21",
+        "eventName": "DeleteTrail",
+        "sourceIP": "192.168.1.30",
+        "severity": "CRITICAL",
+        "score": 100,
+        "category": "Logging Tampering",
+        "message": "Suspicious AWS activity detected: DeleteTrail"
+    }
+]
