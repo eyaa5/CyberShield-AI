@@ -3,23 +3,28 @@ import json
 DANGEROUS_ACTIONS = {
     "DeleteBucket": {
         "severity": "CRITICAL",
-        "score": 95
+        "score": 95,
+        "category": "Data Destruction"
     },
     "StopLogging": {
         "severity": "CRITICAL",
-        "score": 100
+        "score": 100,
+        "category": "Logging Tampering"
     },
     "DeleteTrail": {
         "severity": "CRITICAL",
-        "score": 100
+        "score": 100,
+        "category": "Logging Tampering"
     },
     "AuthorizeSecurityGroupIngress": {
         "severity": "HIGH",
-        "score": 80
+        "score": 80,
+        "category": "Network Exposure"
     },
     "CreateAccessKey": {
         "severity": "HIGH",
-        "score": 75
+        "score": 75,
+        "category": "Identity Risk"
     }
 }
 
@@ -39,6 +44,7 @@ def detect_suspicious_activity(event):
                 "sourceIP": source_ip,
                 "severity": threat_info["severity"],
                 "score": threat_info["score"],
+                "category": threat_info["category"],
                 "message": f"Suspicious AWS activity detected: {event_name}"
             })
 
@@ -51,6 +57,7 @@ def print_alert(alert):
     print(f"Event: {alert['eventName']}")
     print(f"Source IP: {alert['sourceIP']}")
     print(f"Severity: {alert['severity']}")
+    print(f"Category: {alert['category']}")
     print(f"Threat Score: {alert['score']}/100")
     print(f"Message: {alert['message']}")
 
