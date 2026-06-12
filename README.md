@@ -44,3 +44,9 @@ Amazon SNS Email Alert
 CloudTrail was configured to record management events across all AWS regions.
 
 ![CloudTrail](screenshots/04-cloudtrail-created.png)
+
+### S3 Log Storage
+
+CloudTrail logs are stored securely in Amazon S3 buckets for auditing and security investigations.
+
+![S3 Buckets](screenshots/05-s3-buckets.png)
