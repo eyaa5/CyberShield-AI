@@ -1,5 +1,5 @@
 {
-    "generatedAt": "2026-06-11 14:48:55",
+    "generatedAt": "2026-06-13 00:53:42",
     "summary": {
         "totalIncidents": 2,
         "criticalIncidents": 1,
@@ -10,8 +10,8 @@
     },
     "incidents": [
         {
-            "incidentId": "INC-B1344DF2",
-            "timestamp": "2026-06-11 14:48:55",
+            "incidentId": "INC-548EEB90",
+            "timestamp": "2026-06-13 00:53:42",
             "eventName": "CreateAccessKey",
             "sourceIP": "192.168.1.10",
             "severity": "HIGH",
@@ -21,8 +21,8 @@
             "message": "Suspicious AWS activity detected: CreateAccessKey"
         },
         {
-            "incidentId": "INC-A53BD007",
-            "timestamp": "2026-06-11 14:48:55",
+            "incidentId": "INC-7D15BF7F",
+            "timestamp": "2026-06-13 00:53:42",
             "eventName": "DeleteTrail",
             "sourceIP": "192.168.1.30",
             "severity": "CRITICAL",
