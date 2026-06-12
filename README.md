@@ -1,5 +1,12 @@
 # CyberShield AI
 
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
+![CloudTrail](https://img.shields.io/badge/CloudTrail-Enabled-blue)
+![IAM](https://img.shields.io/badge/IAM-Secured-green)
+![S3](https://img.shields.io/badge/S3-Log%20Storage-success)
+![Security](https://img.shields.io/badge/Cybersecurity-AWS-red)
+
+
 AI-Powered AWS Cloud Security Detection and Automated Incident Response Platform.
 
 ## Project Goal
