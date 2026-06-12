@@ -57,3 +57,9 @@ CloudTrail was configured to record management events across all AWS regions.
 CloudTrail logs are stored securely in Amazon S3 buckets for auditing and security investigations.
 
 ![S3 Buckets](screenshots/05-s3-buckets.png)
+
+### Email Alert Simulation
+
+CyberShield AI generates security alerts when critical AWS actions are detected.
+
+![Email Alert](screenshots/08-email-alert-simulation.png)
