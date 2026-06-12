@@ -36,3 +36,11 @@ Amazon SNS Email Alert
 - Send email alerts
 - Store incidents
 - Future dashboard for monitoring threats
+
+## AWS Security Evidence
+
+### CloudTrail Enabled
+
+CloudTrail was configured to record management events across all AWS regions.
+
+![CloudTrail](screenshots/04-cloudtrail-created.png)
