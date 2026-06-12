@@ -9,6 +9,10 @@
 
 AI-Powered AWS Cloud Security Detection and Automated Incident Response Platform.
 
+## Status
+
+CyberShield AI v1.0 is portfolio-ready.
+
 ## Project Goal
 
 CyberShield AI monitors AWS security activity, detects suspicious behavior, sends alerts, and later can automatically respond to threats.
