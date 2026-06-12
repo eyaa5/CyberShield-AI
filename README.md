@@ -67,3 +67,7 @@ CloudTrail logs are stored securely in Amazon S3 buckets for auditing and securi
 CyberShield AI generates security alerts when critical AWS actions are detected.
 
 ![Email Alert](screenshots/08-email-alert-simulation.png)
+
+## Community
+
+CyberShield AI is actively maintained and improved.
