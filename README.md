@@ -71,3 +71,21 @@ CyberShield AI generates security alerts when critical AWS actions are detected.
 ## Community
 
 CyberShield AI is actively maintained and improved.
+
+## AI Incident Analysis
+
+CyberShield AI analyzes detected incidents and generates:
+
+- Threat explanations
+- Risk context
+- Recommended security actions
+
+Example:
+
+DeleteTrail
+↓
+AI Analysis
+↓
+"This activity may indicate an attempt to disable AWS logging and hide malicious actions."
+↓
+Recommended Response
