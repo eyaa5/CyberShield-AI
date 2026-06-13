@@ -105,3 +105,18 @@ CyberShield AI includes a dashboard prototype that displays:
 ### Dashboard Output
 
 ![Dashboard](screenshots/10-dashboard-prototype.png)
+
+## Web Dashboard
+
+CyberShield AI includes a Streamlit-powered security dashboard.
+
+Features:
+
+- Incident monitoring
+- Threat score visualization
+- AI recommendations
+- Security event reporting
+
+### Dashboard
+
+![Dashboard](screenshots/11-streamlit-dashboard.png)
