@@ -89,3 +89,5 @@ AI Analysis
 "This activity may indicate an attempt to disable AWS logging and hide malicious actions."
 ↓
 Recommended Response
+
+![AI Incident Analysis](screenshots/09-ai-incident-analysis.png)
