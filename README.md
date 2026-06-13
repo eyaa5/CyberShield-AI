@@ -19,6 +19,7 @@ CyberShield AI monitors AWS security activity, detects suspicious behavior, send
 
 ## First Version Architecture
 
+
 ```text
 AWS CloudTrail
       ↓
