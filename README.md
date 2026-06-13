@@ -91,3 +91,17 @@ AI Analysis
 Recommended Response
 
 ![AI Incident Analysis](screenshots/09-ai-incident-analysis.png)
+
+## Dashboard Prototype
+
+CyberShield AI includes a dashboard prototype that displays:
+
+- Total incidents
+- Critical incidents
+- High-risk events
+- Threat scores
+- Incident summaries
+
+### Dashboard Output
+
+![Dashboard](screenshots/10-dashboard-prototype.png)
